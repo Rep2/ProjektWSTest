@@ -29,6 +29,9 @@ class IRTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
     /// Refresh indicator
     let refreshControll = UIRefreshControl()
     
+    /// Refresh controll update funcion. If set refresh will be enabled
+    var refreshControllUpdateFunction: (() -> ())?
+    
     init(frame:CGRect, sections:[IRCellViewModelSection] = []){
         self.cellViewModelSections = sections
         
@@ -53,13 +56,13 @@ class IRTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         delegate = self
         dataSource = self
         
+        refreshControll.addTarget(self, action: "refreshControllTarget", forControlEvents: .ValueChanged)
         refreshControll.beginRefreshing()
         
         noDataLabelInit()
         
         noDataShow = {(sections:AnyObject) -> Bool in
-                
-            return (sections as! [IRCellViewModelSection]).count == 0
+            return (sections as! [IRCellViewModelSection]).count == 0 && !self.refreshControll.refreshing
         }
     }
     
@@ -74,11 +77,42 @@ class IRTableView: UITableView, UITableViewDataSource, UITableViewDelegate{
         noDataLabel.sizeToFit()
     }
     
+    /// Sets table data and check for animation
     func setData(sections: [IRCellViewModelSection]){
+        let wasEmpty = self.cellViewModelSections.count == 0
+        
         self.cellViewModelSections = sections
-        refreshControll.endRefreshing()
         
         reloadData()
+    
+        endRefreshControllAnimation(wasEmpty)
+        
+        if refreshControllUpdateFunction == nil{
+            refreshControll.removeFromSuperview()
+        }else{
+            addSubview(refreshControll)
+        }
+       
+    }
+    
+    /// Ends refresh controll animation and resets content
+    /// Parameter wasEmpty: If no data was previously shown, will not animate transition
+    func endRefreshControllAnimation(wasEmpty: Bool){
+        refreshControll.endRefreshing()
+        
+        if !wasEmpty{
+            setContentOffset(CGPointZero, animated: true)
+        }else{
+            setContentOffset(CGPointZero, animated: false)
+        }
+    }
+    
+    
+    /// Gets called on swipe down if refreshControllUpdateFunction is set
+    func refreshControllTarget(){
+        if let update = refreshControllUpdateFunction{
+            update()
+        }
     }
     
     // Events

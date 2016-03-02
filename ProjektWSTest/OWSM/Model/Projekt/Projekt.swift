@@ -17,19 +17,26 @@ struct Projekt{
     let lobovi:[Lob]
     let taksovi:[Task]
     
-    static func arrayFromJSON(data:[[String:AnyObject]]) -> [Projekt]{
+    static func arrayFromJSON(data:[[String:AnyObject]]) -> ([Projekt], [Lob]?){
         
-        var array = [Projekt]()
+        var arrayProjekti = [Projekt]()
+        var arrayLobovi: [Lob]?
         
         for entity in data{
-            array.append(Projekt(id: entity["id"] as? String ?? "-1",
-                voditelj: entity["voditelj"] as? String ?? "",
-                naziv: entity["naziv"] as? String ?? "",
-                lobovi: Lob.arrayFromJSON(entity["lobovi"] as? [[String:AnyObject]] ?? []),
-                taksovi: Task.arrayFromJSON(entity["taskovi"] as? [[String:AnyObject]] ?? [])))
+            
+            // Checks for svi lobovi
+            if let lobovi = entity["svi_lobovi"] as? [[String:AnyObject]]{
+                arrayLobovi = Lob.arrayFromSviLobovi(lobovi)
+            }else{
+                arrayProjekti.append(Projekt(id: entity["id"] as? String ?? "-1",
+                    voditelj: entity["voditelj"] as? String ?? "",
+                    naziv: entity["naziv"] as? String ?? "",
+                    lobovi: Lob.arrayFromJSON(entity["lobovi"] as? [[String:AnyObject]] ?? []),
+                    taksovi: Task.arrayFromJSON(entity["taskovi"] as? [[String:AnyObject]] ?? [])))
+            }
         }
         
-        return array
+        return (arrayProjekti, arrayLobovi)
     }
     
 }

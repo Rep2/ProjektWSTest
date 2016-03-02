@@ -19,7 +19,6 @@
 		AD026F6A1C8623360005782D /* TwoLabelOneImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD026F5C1C8623360005782D /* TwoLabelOneImageTableViewCell.swift */; };
 		AD026F6B1C8623360005782D /* IRCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD026F5E1C8623360005782D /* IRCellViewModel.swift */; };
 		AD026F6C1C8623360005782D /* IRTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD026F601C8623360005782D /* IRTableView.swift */; };
-		AD026F6D1C8623360005782D /* TableWithRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD026F611C8623360005782D /* TableWithRefresh.swift */; };
 		AD026F6F1C862D040005782D /* IRSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD026F6E1C862D040005782D /* IRSectionViewModel.swift */; };
 		AD3CE9C71C8620B800BF62A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CE9C61C8620B800BF62A3 /* AppDelegate.swift */; };
 		AD3CE9C91C8620B800BF62A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3CE9C81C8620B800BF62A3 /* ViewController.swift */; };
@@ -72,7 +71,6 @@
 		AD026F5C1C8623360005782D /* TwoLabelOneImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoLabelOneImageTableViewCell.swift; sourceTree = "<group>"; };
 		AD026F5E1C8623360005782D /* IRCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRCellViewModel.swift; sourceTree = "<group>"; };
 		AD026F601C8623360005782D /* IRTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRTableView.swift; sourceTree = "<group>"; };
-		AD026F611C8623360005782D /* TableWithRefresh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableWithRefresh.swift; sourceTree = "<group>"; };
 		AD026F6E1C862D040005782D /* IRSectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IRSectionViewModel.swift; sourceTree = "<group>"; };
 		AD3CE9C31C8620B800BF62A3 /* ProjektWSTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjektWSTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD3CE9C61C8620B800BF62A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				AD026F601C8623360005782D /* IRTableView.swift */,
-				AD026F611C8623360005782D /* TableWithRefresh.swift */,
 			);
 			path = Table;
 			sourceTree = "<group>";
@@ -534,7 +531,6 @@
 				AD3CE9C71C8620B800BF62A3 /* AppDelegate.swift in Sources */,
 				AD3CEA0B1C8620EB00BF62A3 /* Task.swift in Sources */,
 				AD026F6A1C8623360005782D /* TwoLabelOneImageTableViewCell.swift in Sources */,
-				AD026F6D1C8623360005782D /* TableWithRefresh.swift in Sources */,
 				AD026F6B1C8623360005782D /* IRCellViewModel.swift in Sources */,
 				AD3CEA091C8620EB00BF62A3 /* Projekt.swift in Sources */,
 				AD026F6F1C862D040005782D /* IRSectionViewModel.swift in Sources */,

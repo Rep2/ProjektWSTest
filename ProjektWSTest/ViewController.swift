@@ -15,14 +15,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let data = ProjektResrouce.instance.getAll(
+        table.refreshControllUpdateFunction = {
+            [unowned self] in
+            self.getData(true)
+        }
+        
+        getData(false)
+    }
+    
+    func getData(refresh: Bool = true){
+        if let data = ProjektResrouce.instance.getProjekti(
+            refresh,
             observer: { (data, error) -> Void in
                 self.presentData(data, error: error)
-            })
+        })
         {
             self.presentData(data)
         }
-        
     }
     
     func presentData(data: [Projekt]?, error: HTTPRequestError? = nil){

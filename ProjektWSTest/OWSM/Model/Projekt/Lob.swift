@@ -12,7 +12,7 @@ struct Lob{
     
     let id:String
     let naziv:String
-    let sektori:[Sektor]
+    let sektori:[Sektor]?
     
     static func arrayFromJSON(data:[[String:AnyObject]]) -> [Lob]{
         
@@ -22,6 +22,18 @@ struct Lob{
             array.append(Lob(id: entity["lob_id"] as? String ?? "",
                 naziv: entity["naziv"] as? String ?? "",
                 sektori: Sektor.arrayFromJSON(entity["sektori"] as? [[String:AnyObject]] ?? [])))
+        }
+        
+        return array
+    }
+    
+    static func arrayFromSviLobovi(data:[[String:AnyObject]]) -> [Lob]{
+        var array = [Lob]()
+        
+        for entity in data{
+            array.append(Lob(id: entity["id"] as? String ?? "",
+                naziv: entity["naziv"] as? String ?? "",
+                sektori: nil))
         }
         
         return array
