@@ -16,6 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let wierframe = Wireframe()
+        
+        window?.rootViewController = wierframe.navigationController
+        
         // Override point for customization after application launch.
         return true
     }

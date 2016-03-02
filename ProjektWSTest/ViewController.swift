@@ -41,7 +41,21 @@ class ViewController: UIViewController {
             for projekt in data{
                 cells.append(IRCellViewModel(
                     implementationIdentifier: IRCellIdentifier.OneLabelBasic,
-                    data: [IRCellElementIdentifiers.FirstLabel : projekt.naziv]))
+                    data: [IRCellElementIdentifiers.FirstLabel : projekt.naziv],
+                    didSelectCellFunc: {
+                        var loboviCells = [IRCellViewModel]()
+                        
+                        for lob in projekt.lobovi{
+                            loboviCells.append(IRCellViewModel(
+                                implementationIdentifier: IRCellIdentifier.OneLabelBasic,
+                                data: [IRCellElementIdentifiers.FirstLabel : lob.naziv]))
+                        }
+                        
+                        let controller = GenericsWireframe().getTableViewController()
+                        controller.setSections([IRCellViewModelSection(sectionTitle: nil, cellViewModels: loboviCells),IRCellViewModelSection(sectionTitle: nil, cellViewModels: loboviCells)])
+                        
+                        Wireframe.instance.pushViewController(controller)
+                }))
             }
         }
         
@@ -49,9 +63,8 @@ class ViewController: UIViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func pushLob(lobovi: [Lob]){
+        
     }
 
 
